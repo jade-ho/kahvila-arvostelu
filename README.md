@@ -1,4 +1,4 @@
-# taidegalleria
+# kahvila-arvostelusivu
 
 Ideana se, että käyttäjät pystyvät arvostella kahviloita.
 Käyttäjät voivat luoda oman tunnuksen ja salasanan, sekä lisätä profiilikuvan.
