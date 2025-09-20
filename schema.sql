@@ -7,7 +7,7 @@ CREATE TABLE users (
 CREATE TABLE items (
     id INTEGER PRIMARY KEY,
     title TEXT,
-    kuvaus TEXT,
+    description TEXT,
     tags TEXT,
     user_id INTEGER REFERENCES users
-);
+);.quit
