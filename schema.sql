@@ -10,4 +10,4 @@ CREATE TABLE items (
     description TEXT,
     tags TEXT,
     user_id INTEGER REFERENCES users
-);.quit
+);
