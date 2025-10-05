@@ -15,29 +15,20 @@
         Kuvaus: <br />
         <textarea name="description" rows="10" cols="60" maxlength="1000" required></textarea>
     </p>
+    {% for class in classes %}
+    <p>
+      {{ class }}: <br />
+      <select name="classes">
+        <option value="">[valitse]</option>
+      {% for option in classes[class] %}
+        <option value="{{ class }}:{{ option }}">{{ option }}</option>
+      {% endfor %}
+      </select>
+    </p>
+    {% endfor %}
     <p>
         Tagit: <br />
         <input type="text" name="tags" />
-    </p>
-    <p>
-       Sijainti: <br />
-       <select name="location">
-        <option value="">[valitse]</option>
-        <option value="Töölö">Töölö</option>
-        <option value="Kallio">Kallio</option>
-        <option value="Punavuori">Punavuori</option>
-        <option value="Viikki">Viikki</option>
-       </select>
-    </p>
-    <p>
-       Yleisarvosana 1-4: <br />
-       <select name="rating">
-        <option value="">[valitse]</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-       </select>
     </p>
     <input type="submit" value="Luo arvostelu" />
   </form>
