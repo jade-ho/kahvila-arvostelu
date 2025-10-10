@@ -15,10 +15,12 @@
 ## Testausohje
 
 Vamista, että sinulla on seuraavat asennukset:
-- python
-- pip
-- sqlite3
-- flask
+
+```  
+python
+sqlite3
+flask
+```
 
 Kloonaa repositorio:
 
@@ -39,4 +41,9 @@ sqlite3 database.db < schema.sql
 sqlite3 database.db < init.sql
 ```
 
-Suorita lopuksi flask run ja siirry sen luomaan osoitteeseen.
+Suorita lopuksi:
+```
+flask run
+```
+
+Mene sitten osoitteeseen http://localhost:5000 .
