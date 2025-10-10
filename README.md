@@ -1,6 +1,6 @@
 # Kahvila-arvostelusivu
 
-# Toiminnot
+## Toiminnot
 - Ideana se, että käyttäjät pystyvät arvostella kahviloita.
 - Käyttäjät voivat luoda oman tunnuksen ja salasanan, sekä lisätä profiilikuvan.
 - Käyttäjä voi lisätä kuvia arvosteluunsa.
@@ -12,7 +12,7 @@
 - Pääasiallinen tietokohde on arvostelu ja toissijainen tietokohde on kommentointi.
 
 
-# Testausohje
+## Testausohje
 
 Vamista, että sinulla on seuraavat asennukset:
 - python
@@ -21,14 +21,22 @@ Vamista, että sinulla on seuraavat asennukset:
 - flask
 
 Kloonaa repositorio:
+
+```
 git clone https://github.com/jade-ho/kahvila-arvostelu.git
-cd kahvila-arvostelu
+```
 
 Aja seuraavat komennot:
+
+```
 python -m venv venv
 source venv/bin/activate
+```
 
-Luo tietokanta database.db seuraavilla komennoilla:
+Luo tarvittavat tietokannat:
+```
 sqlite3 database.db < schema.sql
+sqlite3 database.db < init.sql
+```
 
 Suorita lopuksi flask run ja siirry sen luomaan osoitteeseen.

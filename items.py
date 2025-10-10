@@ -9,7 +9,7 @@ def get_all_classes():
         classes[title] = []
     for title, value in result:
         classes[title].append(value)
-        
+
     return classes
 
 def add_item(title, description, tags, user_id, classes):
@@ -51,6 +51,8 @@ def update_item(item_id, title, description, tags):
     db.execute(sql, [title, description, tags, item_id])
 
 def remove_item(item_id):
+    sql = "DELETE FROM item_classes WHERE item_id = ?"
+    db.execute(sql, [item_id])
     sql = "DELETE FROM items WHERE id = ?"
     db.execute(sql, [item_id])
 

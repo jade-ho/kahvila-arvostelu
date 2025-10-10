@@ -61,7 +61,7 @@ def create_item():
         abort(403)
     tags = request.form["tags"]
     user_id = session["user_id"]
-    
+
     classes = []
     for entry in request.form.getlist("classes"):
         if entry:
