@@ -43,12 +43,19 @@ def get_item(item_id):
                     items.id = ?"""
     return db.query(sql, [item_id])[0]
 
-def update_item(item_id, title, description, tags):
+def update_item(item_id, title, description, tags, classes):
     sql = """UPDATE items SET title = ?,
                             description = ?,
                             tags = ?
                         WHERE id = ?"""
     db.execute(sql, [title, description, tags, item_id])
+
+    sql = "DELETE  FROM item_classes WHERE item_id = ?"
+    db.execute(sql, [item_id])
+
+    sql = "INSERT INTO item_classes (item_id, title, value) VALUES (?, ?, ?)"
+    for title, value in classes:
+        db.execute(sql,[item_id, title, value])
 
 def remove_item(item_id):
     sql = "DELETE FROM item_classes WHERE item_id = ?"
