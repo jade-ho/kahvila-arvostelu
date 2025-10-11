@@ -53,6 +53,7 @@ def new_item():
 @app.route("/create_item", methods=["POST"])
 def create_item():
     require_login()
+
     title = request.form["title"]
     if not title or len(title) > 50:
         abort(403)
@@ -62,11 +63,17 @@ def create_item():
     tags = request.form["tags"]
     user_id = session["user_id"]
 
+    all_classes = items.get_all_classes()
+
     classes = []
     for entry in request.form.getlist("classes"):
         if entry:
-            parts = entry.split(":")
-            classes.append((parts[0], parts[1]))
+            class_title, class_value = entry.split(":")
+            if class_title not in all_classes:
+                abort(403)
+            if class_value not in all_classes[class_title]:
+                abort(403)
+            classes.append((class_title, class_value))
 
     items.add_item(title, description, tags, user_id, classes)
 
@@ -108,11 +115,17 @@ def update_item():
         abort(403)
     tags = request.form["tags"]
 
+    all_classes = items.get_all_classes()
+
     classes = []
     for entry in request.form.getlist("classes"):
         if entry:
-            parts = entry.split(":")
-            classes.append((parts[0], parts[1]))
+            class_title, class_value = entry.split(":")
+            if class_title not in all_classes:
+                abort(403)
+            if class_value not in all_classes[class_title]:
+                abort(403)
+            classes.append((class_title, class_value))
 
     items.update_item(item_id, title, description, tags, classes)
 
