@@ -12,16 +12,29 @@ def get_all_classes():
 
     return classes
 
-def add_item(title, description, tags, user_id, classes):
-    sql = """INSERT INTO items (title, description, tags, user_id)
-            VALUES (?, ?, ?, ?)"""
-    db.execute(sql, [title, description, tags, user_id])
+def add_item(title, description, user_id, classes):
+    sql = """INSERT INTO items (title, description, user_id)
+            VALUES (?, ?, ?)"""
+    db.execute(sql, [title, description, user_id])
 
     item_id = db.last_insert_id()
 
     sql = "INSERT INTO item_classes (item_id, title, value) VALUES (?, ?, ?)"
     for title, value in classes:
         db.execute(sql,[item_id, title, value])
+
+
+def add_comment(item_id, user_id, comment):
+    sql = """INSERT INTO comments(item_id, user_id, comment)
+            VALUES (?, ?, ?)"""
+    db.execute(sql, [item_id, user_id, comment])
+
+def get_comments(item_id):
+    sql = """SELECT comments.comment, users.id user_id, users.username
+            FROM comments, users
+            WHERE comments.item_id = ? AND comments.user_id = users.id
+            ORDER BY comments.id DESC"""
+    return db.query(sql, [item_id])
 
 def get_classes(item_id):
     sql = "SELECT title, value FROM item_classes WHERE item_id = ?"
@@ -35,7 +48,6 @@ def get_item(item_id):
     sql = """SELECT items.id,
                     items.title,
                     items.description,
-                    items.tags,
                     users.id user_id,
                     users.username
             FROM items, users
@@ -43,12 +55,11 @@ def get_item(item_id):
                     items.id = ?"""
     return db.query(sql, [item_id])[0]
 
-def update_item(item_id, title, description, tags, classes):
+def update_item(item_id, title, description, classes):
     sql = """UPDATE items SET title = ?,
                             description = ?,
-                            tags = ?
                         WHERE id = ?"""
-    db.execute(sql, [title, description, tags, item_id])
+    db.execute(sql, [title, description, item_id])
 
     sql = "DELETE  FROM item_classes WHERE item_id = ?"
     db.execute(sql, [item_id])
@@ -64,9 +75,9 @@ def remove_item(item_id):
     db.execute(sql, [item_id])
 
 def find_items(query):
-    sql = """SELECT id, title, tags
+    sql = """SELECT id, title
             FROM items
-            WHERE title LIKE ? OR description LIKE ? OR tags LIKE ?
+            WHERE title LIKE ? OR description LIKE ?
             ORDER BY id DESC"""
     like = "%" + query + "%"
-    return db.query(sql, [like, like, like])
+    return db.query(sql, [like, like])
