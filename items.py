@@ -23,7 +23,6 @@ def add_item(title, description, user_id, classes):
     for title, value in classes:
         db.execute(sql,[item_id, title, value])
 
-
 def add_comment(item_id, user_id, comment):
     sql = """INSERT INTO comments(item_id, user_id, comment)
             VALUES (?, ?, ?)"""
@@ -35,6 +34,20 @@ def get_comments(item_id):
             WHERE comments.item_id = ? AND comments.user_id = users.id
             ORDER BY comments.id DESC"""
     return db.query(sql, [item_id])
+
+def get_images(item_id):
+    sql = "SELECT id FROM images WHERE item_id = ?"
+    return db.query(sql,[item_id])
+
+def add_image(item_id, image):
+    sql = "INSERT INTO images (item_id, image) VALUES (?, ?)"
+    db.execute(sql, [item_id, image])
+
+def get_image(image_id):
+    print(image_id)
+    sql = "SELECT image FROM images WHERE id = ?"
+    result = db.query(sql, [image_id])
+    return result[0][0] if result else None
 
 def get_classes(item_id):
     sql = "SELECT title, value FROM item_classes WHERE item_id = ?"
