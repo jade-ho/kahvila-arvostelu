@@ -5,10 +5,17 @@
 {% block content %}
 
 <h2>Arvostelun poistaminen</h2>
-<p>Arvostelu: {{ item.title }}</p>
-<p>Haluatko varmasti poistaa tämän ilmoituksen?</p>
+<p>
+  Arvostelu: {{ item.title }}
+</p>
+<p>
+  Haluatko varmasti poistaa tämän ilmoituksen?
+</p>
 <form action="/remove_item/{{ item.id }}" method="post">
   <input type="submit" name="remove" value="Poista arvostelu">
   <input type="submit" name="back" value="Takaisin">
 </form>
+<p>
+  <a href="/item/{{ item.id }}">Takaisin arvosteluun</a>
+</p>
 {% endblock %}

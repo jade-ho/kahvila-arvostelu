@@ -32,4 +32,7 @@
   <input type="hidden" name="item_id" value="{{ item.id }}" />
   <input type="submit" value="Päivitä arvostelua" />
 </form>
+<p>
+  <a href="/item/{{ item.id }}">Takaisin arvosteluun</a>
+</p>
 {% endblock %}
