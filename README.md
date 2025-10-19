@@ -2,13 +2,12 @@
 
 ## Toiminnot
 - Ideana se, että käyttäjät pystyvät arvostella kahviloita.
-- Käyttäjät voivat luoda oman tunnuksen ja salasanan, sekä lisätä profiilikuvan.
+- Käyttäjät voivat luoda oman tunnuksen ja salasanan.
 - Käyttäjä voi lisätä kuvia arvosteluunsa.
-- Käyttäjä voi muokata omaa julkaisuaan, lisätä sille tägejä (edullinen, pk-seutu, tunnelmallinen), ja poistaa sen.
-- Käyttäjä voi kommentoida muiten julkaisuja ja etsiä niitä hakukentästä tägien avulla.
+- Käyttäjä voi muokata omaa julkaisuaan, lisätä sille luokkia, kuten yleisarvosanan ja sijainnin, ja myös poistaa julkaisun.
+- Käyttäjä voi kommentoida muiden julkaisuja ja etsiä niitä hakukentästä kuvauksen tai otsikon mukaan.
 - Käyttäjä saa ilmoituksia liittyen julkaisuihinsa (tykkäykset, kommentit).
-- Käyttäjäsivulla voi nähdä tilastoja käyttäjän aktiivisuudesta ja luotettavuudesta.
-
+- Käyttäjäsivulla voi nähdä tilastoja käyttäjän aktiivisuudesta.
 - Pääasiallinen tietokohde on arvostelu ja toissijainen tietokohde on kommentointi.
 
 
