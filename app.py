@@ -1,5 +1,6 @@
 import sqlite3
 import secrets
+import markupsafe
 from flask import Flask
 from flask import abort, flash, make_response, redirect, render_template, request, session
 import config
@@ -19,6 +20,12 @@ def check_csrf():
 def require_login():
     if "user_id" not in session:
         abort(403)
+
+@app.template_filter()
+def show_lines(content):
+    content = str(markupsafe.escape(content))
+    content = content.replace("\n", "<br />")
+    return markupsafe.Markup(content)
 
 @app.route("/")
 def index():
