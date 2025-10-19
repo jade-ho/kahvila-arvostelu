@@ -18,6 +18,7 @@ def last_insert_id():
     return g.last_insert_id
 
 def query(sql, params=[]):
+    con = sqlite3.connect("database.db", timeout=5)
     con = get_connection()
     result = con.execute(sql, params).fetchall()
     con.close()

@@ -16,7 +16,7 @@ CREATE TABLE comments (
     id INTEGER PRIMARY KEY,
     item_id INTEGER REFERENCES items,
     user_id INTEGER REFERENCES users,
-    comment INTEGER
+    comment TEXT
 );
 
 CREATE TABLE classes (
