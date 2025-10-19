@@ -1,0 +1,18 @@
+body {
+  margin: auto;
+  max-width: 50em;
+  font-family: sans-serif;
+  background-color: lavender;
+}
+
+.item {
+    border: 2px solid black;
+    margin: 1em;
+    padding: 0.2em 0.5em;
+}
+
+.comment_count {
+    font-weight: bold;
+    color: darkblue;
+    margin-bottom: 1em;
+}

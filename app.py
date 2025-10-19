@@ -42,10 +42,9 @@ def show_item(item_id):
     if not item:
         abort(404)
     classes = items.get_classes(item_id)
-    comments = items.get_comments(item_id)
     images = items.get_images(item_id)
-    return render_template("show_item.html", item=item, classes=classes,
-                           comments=comments, images=images)
+    comments = items.get_comments(item_id)
+    return render_template("show_item.html", item=item, classes=classes, images=images, comments=comments)
 
 @app.route("/new_item")
 def new_item():
@@ -95,7 +94,8 @@ def create_item():
 
     items.add_item(title, description, user_id, classes)
 
-    return redirect("/")
+    item_id = db.last_insert_id()
+    return redirect("/item/" + str(item_id))
 
 @app.route("/images/<int:item_id>")
 def edit_images(item_id):
@@ -145,7 +145,6 @@ def remove_images():
         abort(403)
 
     for image_id in request.form.getlist("image_id"):
-        print(image_id)
         items.remove_image(item_id, image_id)
 
     return redirect("/images/" + str(item_id))

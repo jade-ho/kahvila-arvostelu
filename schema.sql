@@ -12,6 +12,13 @@ CREATE TABLE items (
     user_id INTEGER REFERENCES users
 );
 
+CREATE TABLE comments (
+    id INTEGER PRIMARY KEY,
+    item_id INTEGER REFERENCES items,
+    user_id INTEGER REFERENCES users,
+    comment INTEGER
+);
+
 CREATE TABLE classes (
     id INTEGER PRIMARY KEY,
     title TEXT,
@@ -23,4 +30,10 @@ CREATE TABLE item_classes (
     item_id INTEGER REFERENCES items,
     title TEXT,
     value TEXT
+);
+
+CREATE TABLE images (
+    id INTEGER PRIMARY KEY,
+    item_id INTEGER REFERENCES items,
+    image BLOB
 );
