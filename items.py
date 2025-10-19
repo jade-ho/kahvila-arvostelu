@@ -35,6 +35,14 @@ def get_comments(item_id):
             ORDER BY comments.id DESC"""
     return db.query(sql, [item_id])
 
+def get_user_comments(user_id):
+    sql = """SELECT comments.comment, items.title, items.id AS item_id
+             FROM comments
+             JOIN items ON comments.item_id = items.id
+             WHERE comments.user_id = ?
+             ORDER BY comments.id DESC"""
+    return db.query(sql, [user_id])
+
 def get_images(item_id):
     sql = "SELECT id FROM images WHERE item_id = ?"
     return db.query(sql,[item_id])

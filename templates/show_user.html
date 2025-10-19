@@ -8,10 +8,19 @@
 <p>
   Käyttäjällä on yhteensä {{ items | count  }} arvostelua.
 </p>
+
 <h3>Arvostelut</h3>
 <ul>
   {% for item in items %}
   <li><a href="/item/{{ item.id }}">{{ item.title }}</a></li>
   {% endfor %}
 </ul>
+
+<h3>Kommentit</h3>
+<ul>
+  {% for comment in comments %}
+  <li>{{ comment.comment }} (Arvostelu: <a href="/item/{{ comment.item_id }}">{{ comment.title }}</a>)</li>
+  {% endfor %}
+</ul>
+
 {% endblock %}
