@@ -45,4 +45,4 @@ Suorita lopuksi:
 flask run
 ```
 
-Mene sitten osoitteeseen http://localhost:5000 .
+Mene osoitteeseen http://localhost:5000 .
