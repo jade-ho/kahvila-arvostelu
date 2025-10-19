@@ -12,6 +12,7 @@
   Haluatko varmasti poistaa tämän ilmoituksen?
 </p>
 <form action="/remove_item/{{ item.id }}" method="post">
+  <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}" />
   <input type="submit" name="remove" value="Poista arvostelu">
   <input type="submit" name="back" value="Takaisin">
 </form>
