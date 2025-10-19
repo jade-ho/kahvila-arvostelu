@@ -1,8 +1,45 @@
 body {
-  margin: auto;
-  max-width: 50em;
   font-family: sans-serif;
-  background-color: lavender;
+  background-color: #f5e2ff99;
+}
+
+header {
+    padding: 20px;
+    text-align: left;
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    font-size: 12px;
+}
+
+ul.nav {
+    display: flex;
+    list-style-type: none;
+    margin: 20;
+    padding: 2;
+    background-color: white;
+}
+
+.status {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    margin: 0;
+    font-size: 15px;
+}
+
+.divider {
+    height: 2px;
+    background-color: black;
+    margin: 2em 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    text-align: center;
 }
 
 .item {
@@ -15,6 +52,5 @@ body {
     border: 2px solid black;
     margin: 1em;
     padding: 0.5em;
-    background-color: rgb(89, 89, 89);
     color: white;
 }

@@ -6,34 +6,37 @@
 </head>
 
 <body>
-  <h1>Kahvila-arvostelu</h1>
 
-  {% if session.user_id %}
-  <p>
-    Olet kirjautunut nimellä <a href="/user/{{ session.user_id }}">{{ session.username }}</a>
-  </p>
-  {% endif %}
+  <header>
+    <h1>BrewView</h1>
+    {% if session.user_id %}
+    <p class="status">
+      Olet kirjautunut nimellä <a href="/user/{{ session.user_id }}">{{ session.username }}</a>
+    </p>
+    {% endif %}
+  </header>
 
-  <p>
-    <a href="/">Etusivu</a> |
-    <a href="/find_item">Etsi arvostelu</a> |
-  {% if session.user_id %}
-    <a href="/new_item">Uusi arvostelu</a> |
-    <a href="/logout">Kirjaudu ulos</a>
-  {% else %}
-    <a href="/login">Kirjaudu sisään</a> |
-    <a href="/register">Luo tunnus</a>
-  {% endif %}
-  </p>
+    <ul class="nav">
+      <li><a href="/">Etusivu</a> |</li>
+      <li><a href="/find_item">Etsi arvostelu</a> |</li>
+      {% if session.user_id %}
+      <li><a href="/new_item">Uusi arvostelu</a> |</li>
+      <li><a href="/logout">Kirjaudu ulos</a></li>
+      {% else %}
+      <li><a href="/login">Kirjaudu sisään</a> |</li>
+      <li><a href="/register">Luo tunnus</a></li>
+      {% endif %}
+    </ul>
 
-  {% for message in get_flashed_messages() %}
-  <div class="info">
-    {{ message }}
+    {% for message in get_flashed_messages() %}
+    <div class="info">
+      {{ message }}
+    </div>
+    {% endfor %}
+    <div class="divider"></div>
+
+    {% block content %}{% endblock %}
   </div>
-  {% endfor %}
-
-  {% block content %}{% endblock %}
-
 </body>
 
 </html>
