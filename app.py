@@ -1,8 +1,10 @@
 import sqlite3
 import secrets
-import markupsafe
+
 from flask import Flask
 from flask import abort, flash, make_response, redirect, render_template, request, session
+import markupsafe
+
 import config
 import db
 import items
@@ -31,7 +33,7 @@ def show_lines(content):
 def index():
     all_items = items.get_items()
     return render_template("index.html", items=all_items)
- 
+
 @app.route("/user/<int:user_id>")
 def show_user(user_id):
     user = users.get_user(user_id)
@@ -60,7 +62,8 @@ def show_item(item_id):
     classes = items.get_classes(item_id)
     images = items.get_images(item_id)
     comments = items.get_comments(item_id)
-    return render_template("show_item.html", item=item, classes=classes, images=images, comments=comments)
+    return render_template("show_item.html", item=item, classes=classes,
+                           images=images, comments=comments)
 
 @app.route("/new_item")
 def new_item():
@@ -251,8 +254,7 @@ def remove_item(item_id):
         if "remove" in request.form:
             items.remove_item(item_id)
             return redirect("/")
-        else:
-            return redirect("/item/" + str(item_id))
+        return redirect("/item/" + str(item_id))
 
 @app.route("/register")
 def register():
@@ -285,7 +287,7 @@ def login():
     if request.method == "POST":
         username = request.form["username"]
         password = request.form["password"]
-        
+
         user_id = users.check_login(username, password)
         if user_id:
             session["user_id"] = user_id
